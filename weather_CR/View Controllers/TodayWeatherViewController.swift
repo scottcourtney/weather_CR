@@ -21,11 +21,11 @@ class TodayWeatherViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var realfeelLbl: UILabel!
     
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-
+        
         self.searchBar.isHidden = true
         self.locationBtn.setTitle("", for: .normal)
         self.currentTempLbl.text = ""
@@ -45,11 +45,11 @@ class TodayWeatherViewController: UIViewController, UISearchBarDelegate {
         locationBtn.addTarget(self, action: #selector(showSearchBar), for: .touchUpInside)
         if results != nil {
             let url = URL(string:self.results?.current.condition.icon ?? "")
-              let lastPath = url?.lastPathComponent
+            let lastPath = url?.lastPathComponent
             self.weatherImg.image = UIImage(named: lastPath ?? "")
             let currentTemp = Int(round(self.results?.current.tempF ?? 0))
             let realFeelTemp = Int(round(self.results?.current.feelslikeF ?? 0))
-
+            
             self.currentTempLbl.text = String(currentTemp) + "º"
             self.realfeelLbl.text = "RealFeel " + String(realFeelTemp) + "º"
         }
@@ -69,35 +69,36 @@ class TodayWeatherViewController: UIViewController, UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("Search has started")
+        
         self.searchBar.endEditing(true)
         self.searchBar.isHidden = true
         if searchBar.text == nil { return } else {
-            fetchWeatherData(location: String(searchBar.text!)) { (success, resultVal) in
-            if success == true
-            {
-                print(resultVal)
-                self.results = resultVal
-                DispatchQueue.main.async {
-                    Utils.shared.hideSpinner(view: self.view)
-                    self.updateUI()
-                    
-                }
-            }
-            else {
-                print("Error fetching data")
-            }
+            Utils.shared.showSpinner(message: "Fetching Data", view: self.view)
             
+            fetchWeatherData(location: String(searchBar.text!)) { (success, resultVal) in
+                if success == true
+                {
+                    print(resultVal)
+                    self.results = resultVal
+                    DispatchQueue.main.async {
+                        Utils.shared.hideSpinner(view: self.view)
+                        self.updateUI()
+                        
+                    }
+                }
+                else {
+                    print("Error fetching data")
+                }
+                
+            }
         }
-        print(searchBar.text!)
-    }
     }
     
     @objc func showSearchBar() {
         searchBar.showsBookmarkButton = true
         searchBar.setImage(UIImage(systemName: "location"), for: .bookmark, state: .normal)
         if self.searchBar.isHidden {
-        self.searchBar.isHidden = false
+            self.searchBar.isHidden = false
         } else {
             self.searchBar.isHidden = true
         }
@@ -111,7 +112,7 @@ extension TodayWeatherViewController: CLLocationManagerDelegate {
     
     func determineMyCurrentLocation()
     {
-        Utils.shared.showSpinner(message: "Fetching Location", view: self.view)
+        Utils.shared.showSpinner(message: "Fetching Data", view: self.view)
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
