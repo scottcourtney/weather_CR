@@ -62,7 +62,6 @@ class TodayWeatherViewController: UIViewController, UISearchBarDelegate, UITabBa
         if searchBar.text == "" {
             searchBar.setImage(UIImage(systemName: "location"), for: .bookmark, state: .normal)
         }
-        print("searchText",searchText)
     }
     
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
@@ -81,7 +80,6 @@ class TodayWeatherViewController: UIViewController, UISearchBarDelegate, UITabBa
             fetchWeatherData(location: String(searchBar.text!)) { (success, resultVal) in
                 if success == true
                 {
-                    print(resultVal)
                     self.results = resultVal
                     Weather.shared.weather = self.results
                     DispatchQueue.main.async {
@@ -106,7 +104,6 @@ class TodayWeatherViewController: UIViewController, UISearchBarDelegate, UITabBa
         } else {
             self.searchBar.isHidden = true
         }
-        print("Button Pressed")
     }
     
 }
@@ -143,7 +140,6 @@ extension TodayWeatherViewController: CLLocationManagerDelegate {
             fetchWeatherData(location: String(zipCode)) { (success, resultVal) in
                 if success == true
                 {
-                    print(resultVal)
                     self.results = resultVal
                     Weather.shared.weather = self.results
                     DispatchQueue.main.async {
