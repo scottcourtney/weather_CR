@@ -20,6 +20,7 @@
 		313D5C4D27F617E1004618B7 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313D5C4C27F617E1004618B7 /* APIHelper.swift */; };
 		31AAB8DE27F6453F007ED65E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AAB8DD27F6453F007ED65E /* Utils.swift */; };
 		31BD9E9427F79948000478C1 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BD9E9327F79948000478C1 /* Weather.swift */; };
+		31D6DDC027F8C9E9006AF005 /* HourlyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D6DDBF27F8C9E9006AF005 /* HourlyDetailViewController.swift */; };
 		B04C7CA2E912C418BB7466A4 /* Pods_weather_CR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115BD82291414BEB6AC9C08F /* Pods_weather_CR.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		313D5C4C27F617E1004618B7 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		31AAB8DD27F6453F007ED65E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		31BD9E9327F79948000478C1 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		31D6DDBF27F8C9E9006AF005 /* HourlyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyDetailViewController.swift; sourceTree = "<group>"; };
 		F91B96E4A3B540A3951E5A75 /* Pods-weather_CR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weather_CR.debug.xcconfig"; path = "Target Support Files/Pods-weather_CR/Pods-weather_CR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 				313D5C4327F616F4004618B7 /* TodayWeatherViewController.swift */,
 				313D5C4627F61709004618B7 /* DailyWeatherViewController.swift */,
 				313D5C4927F61716004618B7 /* HourlyWeatherViewController.swift */,
+				31D6DDBF27F8C9E9006AF005 /* HourlyDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				313D5C4727F61709004618B7 /* DailyWeatherViewController.swift in Sources */,
 				313D5C0C27F4D845004618B7 /* AppDelegate.swift in Sources */,
 				31BD9E9427F79948000478C1 /* Weather.swift in Sources */,
+				31D6DDC027F8C9E9006AF005 /* HourlyDetailViewController.swift in Sources */,
 				31AAB8DE27F6453F007ED65E /* Utils.swift in Sources */,
 				313D5C3D27F507B6004618B7 /* Constants.swift in Sources */,
 				313D5C4A27F61716004618B7 /* HourlyWeatherViewController.swift in Sources */,

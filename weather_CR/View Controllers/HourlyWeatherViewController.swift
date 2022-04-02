@@ -22,7 +22,6 @@ class HourlyWeatherViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var hourlyTableView: UITableView!
     @IBOutlet weak var locationBtn: UIButton!
     
-    let todayVC: TodayWeatherViewController? = nil
     var results: WeatherResult?
     
     override func viewWillAppear(_ animated: Bool) {

@@ -61,4 +61,16 @@ class DailyWeatherViewController: UIViewController, UITableViewDelegate, UITable
         cell.tempLbl.text = String(temp) + "º"
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HourlyDetailViewController") as! HourlyDetailViewController
+            
+//        vc.skyLabelString = weatherData?.list[indexPath.row].weather[0].main
+//        vc.descSkyLabelString = weatherData?.list[indexPath.row].weather[0].description
+//        vc.tempLabelString =  measurementFormatter.string(from: temp.converted(to: .fahrenheit))
+//        vc.feelsLikeLabelString = measurementFormatter.string(from: feelsLike.converted(to: .fahrenheit))
+        vc.indexPathPassed = indexPath.row
+        self.present(vc, animated: true, completion: nil)
+        
+    }
 }
