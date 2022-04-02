@@ -7,13 +7,7 @@
 
 import Foundation
 import Alamofire
-import CoreLocation
 
-
-private var locationManager = CLLocationManager()
-private var geocoder = CLGeocoder()
-
-// Call the weather api
 func fetchWeatherData(location: String, completionHandler:@escaping ( _ success: Bool, _ resultVal: WeatherResult) -> Void) {
     
     AF.request(WEATHERURL + FORECASTPATH + "?key=" + WEATHERKEY + "&q=" + location + "&days=10&aqi=no&alerts=no").responseJSON {(response) in

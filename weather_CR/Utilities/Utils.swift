@@ -18,8 +18,8 @@ class Utils {
         return Static.instance
     }
 
-    // MARK: - MBProgressHUD
 
+    // spinner functionality
     func showSpinner(message: String?, view: UIView) {
 
         let loadingNotification = MBProgressHUD.showAdded(to: view, animated: true)

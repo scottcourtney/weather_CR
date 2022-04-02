@@ -9,7 +9,8 @@ import UIKit
 import Alamofire
 import CoreLocation
 
-class TodayWeatherViewController: UIViewController, UISearchBarDelegate {
+class TodayWeatherViewController: UIViewController, UISearchBarDelegate, UITabBarControllerDelegate {
+    
     private var locationManager = CLLocationManager()
     private var geocoder = CLGeocoder()
     
@@ -21,7 +22,6 @@ class TodayWeatherViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var realfeelLbl: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
@@ -31,9 +31,11 @@ class TodayWeatherViewController: UIViewController, UISearchBarDelegate {
         self.currentTempLbl.text = ""
         self.realfeelLbl.text = ""
         
+        // find the location of the user with CoreLocation
         determineMyCurrentLocation()
     }
     
+    // Hide keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.searchBar.endEditing(true)
         self.searchBar.isHidden = true
@@ -55,6 +57,7 @@ class TodayWeatherViewController: UIViewController, UISearchBarDelegate {
         }
         
     }
+    // Search Bar functionality
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == "" {
             searchBar.setImage(UIImage(systemName: "location"), for: .bookmark, state: .normal)
@@ -80,6 +83,7 @@ class TodayWeatherViewController: UIViewController, UISearchBarDelegate {
                 {
                     print(resultVal)
                     self.results = resultVal
+                    Weather.shared.weather = self.results
                     DispatchQueue.main.async {
                         Utils.shared.hideSpinner(view: self.view)
                         self.updateUI()
@@ -107,7 +111,7 @@ class TodayWeatherViewController: UIViewController, UISearchBarDelegate {
     
 }
 
-
+// All the location management
 extension TodayWeatherViewController: CLLocationManagerDelegate {
     
     func determineMyCurrentLocation()
@@ -141,6 +145,7 @@ extension TodayWeatherViewController: CLLocationManagerDelegate {
                 {
                     print(resultVal)
                     self.results = resultVal
+                    Weather.shared.weather = self.results
                     DispatchQueue.main.async {
                         Utils.shared.hideSpinner(view: self.view)
                         self.updateUI()

@@ -7,11 +7,6 @@
 
 import Foundation
 
-
     let WEATHERKEY = "447461edc5ed4a1fbcc173228223003"
-
     let WEATHERURL = "https://api.weatherapi.com/v1/"
     let FORECASTPATH = "forecast.json"
-
-
-// FUTURE ADD ALL STRINGS 
